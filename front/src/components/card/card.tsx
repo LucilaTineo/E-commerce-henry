@@ -1,41 +1,45 @@
 'use client';
 import React from "react";
-import styled from "styled-components";
-import {IProducts} from "@/types/IProducts"
+import { IProducts } from "@/types/IProducts";
 
-
-const CardContainer = styled.div `
-width: 100%;
-  max-width: auto;
-  margin: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 20px;
-  box-sizing: border-box;
-`;
-
-const Image = styled.img`
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 10px;
-`;
-
-
-const ProductCard = ({image, name, description, price, categoryId, stock} : IProducts)  => {
-    return (
-        <CardContainer>
-            <Image src = {image} alt = {image}/>
-            <h3>{name}</h3>
-            <p>{description}</p>
-            <p>Precio: $ {price}</p>
-            <p>Categoria: {categoryId}</p>
-            <p>Stock: {stock}</p>
-            
-        </CardContainer>
-    );
+const CardContainer = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <div className="w-full max-w-auto border border-gray-300 rounded-lg p-4">
+      {children}
+    </div>
+  );
 };
 
+const Image = ({ src, alt }: { src: string; alt: string }) => {
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className="w-full h-auto rounded-lg mb-4"
+    />
+  );
+};
+
+const ProductCard = ({
+  image,
+  name,
+  description,
+  price,
+  categoryId,
+  stock,
+}: IProducts) => {
+  return (
+    <CardContainer>
+      <Image src={image} alt={image} />
+      <h3 className="text-xl font-bold mb-2">{name}</h3>
+      <p className="text-gray-700 mb-2">{description}</p>
+      <p className="text-gray-700 mb-2">Precio: $ {price}</p>
+      <p className="text-gray-700 mb-2">Categoria: {categoryId}</p>
+      <p className="text-gray-700 mb-2">Stock: {stock}</p>
+    </CardContainer>
+  );
+};
 
 export default ProductCard;
+
 

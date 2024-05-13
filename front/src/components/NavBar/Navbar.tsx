@@ -1,72 +1,65 @@
-'use client';
-import {useState} from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
+import Link from 'next/link';
 
-const NavbarContainer = styled.nav`
-  background-color: #212B38;
-  color: #00EED0;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-
-const MenuIcon = styled.div`
-  cursor: pointer;
-  display: none;
-
-  @media (max-width: 768px) {
-    display: block; 
-  }
-`;
-
-type MenuListProps = {
-  open: boolean;
+type NavbarProps = {
+  isVisible: boolean;
+  token: string | null;
+  setToken: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
-const MenuList = styled.ul<MenuListProps>`
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    background-color: #212b38;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    display: ${props => props.open ? 'flex' : 'none'};
-  }
-`;
-
-const MenuItem = styled.li`
-  margin-right: 20px;
-
-  @media (max-width: 768px) {
-    margin-right: 0;
-    margin-bottom: 10px;
-  }
-`;
-
-const Navbar = () => {
+const Navbar: React.FC<NavbarProps> = ({ isVisible, token, setToken }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
+  const logOutHandler = () => {
+    setToken(null);
+    localStorage.removeItem('token');
+  };
+
   return (
-    <NavbarContainer>
-      <MenuIcon onClick={toggleMenu}>☰</MenuIcon>
-      <MenuList open={menuOpen}>
-        <MenuItem>Inicio</MenuItem>
-        <MenuItem>Productos</MenuItem>
-        <MenuItem>Contacto</MenuItem>
-      </MenuList>
-    </NavbarContainer>
+    <>
+      {isVisible && (
+        <nav className="bg-gray-600 text-white px-4 py-2 flex justify-between items-center">
+          <div className="md:hidden">
+            <button className="text-white focus:outline-none" onClick={toggleMenu}>
+              ☰
+            </button>
+          </div>
+          <div className="hidden md:flex">
+            <ul className="flex">
+              <li className="mr-4">
+                <Link href="/">Inicio</Link>
+              </li>
+              <li className="mr-4">
+                <Link href="/product">Productos</Link>
+              </li>
+              <li className="mr-4">
+                <Link href="/contacto">Contacto</Link>
+              </li>
+              {token && (
+                <li className="mr-4">
+                  <Link href="/user/dashboard">Dashboard</Link>
+                </li>
+              )}
+            </ul>
+          </div>
+          {token ? (
+            <div>
+              <button className="text-white" type="button" onClick={logOutHandler}>Cerrar Sesión</button>
+            </div>
+          ) : (
+            <div>
+              <Link href="/login">Iniciar Sesión</Link>
+              <span className="mx-2">|</span>
+              <Link href="/register">Registrarse</Link>
+            </div>
+          )}
+        </nav>
+      )}
+    </>
   );
 };
 

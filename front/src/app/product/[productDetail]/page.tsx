@@ -1,6 +1,6 @@
 import React from "react"
 
-const ProductDetail = ({params}) => {
+const ProductDetail = ({params}: { params: any }) => {
     return(
         <div> ProductDetail {params.ProductDetail} </div>
     )
@@ -8,3 +8,4 @@ const ProductDetail = ({params}) => {
 }
 
 export default ProductDetail
+
