@@ -1,22 +1,37 @@
-import React from 'react';
-import Cards from '../cards/cards';
-import productsToPreLoad from "../../utils/products";
+'use client'
+import React, { useEffect, useState } from 'react';
+import Cards from '../CardGrid/cardGrid';
+import Carousel from "../Carousel/carousel";
+
+const apiUrl = "http://localhost:3001";
 
 const Home = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await fetch(`${apiUrl}/products`);
+        if (res.ok) {
+          const data = await res.json();
+          setProducts(data);
+        } else {
+          console.error("Error fetching products:", res.status);
+        }
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+    fetchProducts();
+  }, []);
+
   return (
     <div>
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-4">¡Bienvenido a Tu Tienda de Tecnología!</h1>
-        <p className="text-lg mb-8">Descubre los productos más innovadores al mejor precio.</p>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <Cards products={productsToPreLoad} />
-        </div>
-      </div>
+      <Carousel />
+      <Cards products={products} />
     </div>
   );
 };
 
 export default Home;
-
 
