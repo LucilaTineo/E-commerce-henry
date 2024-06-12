@@ -14,9 +14,16 @@ export async function createOrders(products: number[], token: string) {
             })
         })
 
+
+        if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`);
+          }
+
+
         const orders = await res.json()
         return orders;
     } catch (error:any) {
+        console.error("Error creating order:", error);
         throw new Error(error.message)
     }
 };
@@ -24,7 +31,7 @@ export async function createOrders(products: number[], token: string) {
 
 export async function getOrder(token: string) {
     try {
-        const res= await fetch (`${apiUrl}/users/orders`, {
+        const res= await fetch (`${apiUrl}/orders`, {
             method: 'GET',
             cache: 'no-cache',
             headers: {

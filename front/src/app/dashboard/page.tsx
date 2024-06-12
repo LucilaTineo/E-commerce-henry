@@ -19,8 +19,8 @@ const Dashboard = () => {
           const parsedUserData = JSON.parse(storedUserData);
           console.log("Datos parseados del usuario:", parsedUserData);
 
-          const userDataToStore = parsedUserData.userData;
-          localStorage.setItem("userSession", JSON.stringify(userDataToStore));
+
+          localStorage.setItem("userSession", JSON.stringify(parsedUserData));
 
   
           setUserData(parsedUserData);
@@ -41,21 +41,21 @@ const Dashboard = () => {
   <div className="flex flex-col justify-center items-center h-[100vh]">
   <div className="relative flex flex-col items-center rounded-[20px] w-[700px] max-w-[95%] mx-auto bg-white bg-clip-border shadow-3xl shadow-shadow-500 dark:!bg-navy-800 dark:text-white dark:!shadow-none p-3">
   <div className="mt-2 mb-8 w-full">
-      <h1 className="px-2 text-xl font-bold text-navy-700 dark:text-white">Bienvenido {name}</h1>
+      <h1 className="px-2 text-xl font-bold text-[#6ac88e] dark:text-white">Bienvenido {name}</h1>
       <div className="flex flex-col justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500 dark:!bg-navy-700 dark:shadow-none">
-      <p className="text-sm text-gray-600">Dirección de correo electrónico </p>
-      <p className="text-base font-medium text-navy-700 dark:text-white"> {email}</p>
+      <p className="text-sm text-[#6ac88e]">Dirección de correo electrónico </p>
+      <p className="text-base font-medium text-[#205072] dark:text-white"> {email}</p>
       </div>
       <div className="flex flex-col justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500 dark:!bg-navy-700 dark:shadow-none">
-      <p className="text-sm text-gray-600">Dirección </p>
-      <p className="text-base font-medium text-navy-700 dark:text-white">{address}</p>
+      <p className="text-sm text-[#6ac88e]">Dirección </p>
+      <p className="text-base font-medium text-[#205072] dark:text-white">{address}</p>
       </div>
       <div className="flex flex-col justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500 dark:!bg-navy-700 dark:shadow-none">
-      <p className="text-sm text-gray-600">Teléfono </p>
-      <p className="text-base font-medium text-navy-700 dark:text-white">{phone}</p>
+      <p className="text-sm text-[#6ac88e]">Teléfono </p>
+      <p className="text-base font-medium text-[#205072] dark:text-white">{phone}</p>
     </div>
-    <Link href="/dashboard/orders" className="w-full inline-block pt-4 pr-5 pb-4 pl-5 text-xl font-medium text-center text-white bg-indigo-500
-                  rounded-lg transition duration-200 hover:bg-indigo-600 ease">Mis Ordenes</Link>
+    <Link href="/dashboard/orders" className="w-full inline-block pt-4 pr-5 pb-4 pl-5 text-xl font-medium text-center text-white bg-[#205072]
+                  rounded-lg transition duration-200 hover:bg-[#6ac88e] ease">Mis Ordenes</Link>
     </div>
     </div>
     </div>

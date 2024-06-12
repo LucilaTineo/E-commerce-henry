@@ -73,14 +73,15 @@ const RegisterForm = () => {
                 <img src={registerImg.src} className="btn-"/>
               </div>
             </div>
-            <div className="w-full mt-20 mr-0 mb-0 ml-0 relative z-10 max-w-2xl lg:mt-0 lg:w-5/12">
+        
+            <div className="w-full mt-20 relative z-10 max-w-2xl lg:mt-0 lg:w-5/12">
               <div className="flex flex-col items-start justify-start pt-10 pr-10 pb-10 pl-10 bg-white shadow-2xl rounded-xl
                   relative z-10">
-                <p className="w-full text-4xl font-medium text-center leading-snug font-serif">¡Sumate a nuestra comunidad!</p>
+                <p className="w-full text-4xl font-medium text-center leading-snug font-serif text-[#205072]">¡Sumate a nuestra comunidad!</p>
                 <div className="w-full mt-6 mr-0 mb-0 ml-0 relative space-y-8"></div>
                   <div>
         <div>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="space-y-6 w-full">
                 <div>
                 <p className="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute">Nombre</p>
                     <input
@@ -89,11 +90,9 @@ const RegisterForm = () => {
                         name="name"
                         placeholder="Full name"
                         onChange={handleChange}
-                        className="border placeholder-gray-400 focus:outline-none
-                  focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white
-                  border-gray-300 rounded-md"
+                        className="border placeholder-[#6ac88e] focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md"
                     />
-                    {errors.name && <p>{errors.name}</p>}
+                    {errors.name && <p className="text-red-500 mt-2">{errors.name}</p>}
                 </div>
                 <div>
                 <p className="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute">Email</p>
@@ -103,11 +102,9 @@ const RegisterForm = () => {
                         name="email"
                         placeholder="example@gmail.com"
                         onChange={handleChange}
-                        className="border placeholder-gray-400 focus:outline-none
-                  focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white
-                  border-gray-300 rounded-md"
+                        className="border placeholder-[#6ac88e] focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md"
                     />
-                    {errors.email && <p>{errors.email}</p>}
+                    {errors.email && <p className="text-red-500 mt-2">{errors.email}</p>}
                 </div>
                 <div>
                 <p className="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute">Dirección</p>
@@ -117,11 +114,9 @@ const RegisterForm = () => {
                         name="address"
                         placeholder="Enter your address"
                         onChange={handleChange}
-                        className="border placeholder-gray-400 focus:outline-none
-                  focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white
-                  border-gray-300 rounded-md"
+                        className="border placeholder-[#6ac88e] focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md"
                     />
-                    {errors.address && <p>{errors.address}</p>}
+                    {errors.address && <p className="text-red-500 mt-2">{errors.address}</p>}
                 </div>
                 <div>
                 <p className="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute">Contraseña</p>
@@ -131,11 +126,9 @@ const RegisterForm = () => {
                         name="password"
                         placeholder="Insert your password"
                         onChange={handleChange}
-                        className="border placeholder-gray-400 focus:outline-none
-                  focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white
-                  border-gray-300 rounded-md"
+                        className="border placeholder-[#6ac88e] focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md"
                     />
-                    {errors.password && <p>{errors.password}</p>}
+                    {errors.password && <p className="text-red-500 mt-2">{errors.password}</p>}
                 </div>
                 <div>
                 <p className="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute">Telefono</p>
@@ -145,16 +138,13 @@ const RegisterForm = () => {
                         name="phone"
                         placeholder="Enter your phone number"
                         onChange={handleChange}
-                        className="border placeholder-gray-400 focus:outline-none
-                  focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white
-                  border-gray-300 rounded-md"
+                        className="border placeholder-[#6ac88e] focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white border-gray-300 rounded-md"
                     />
-                    {errors.phone && <p>{errors.phone}</p>}
+                    {errors.phone && <p className="text-red-500 mt-2">{errors.phone}</p>}
                 </div>
-                <button type="submit" className="w-full inline-block pt-4 pr-5 pb-4 pl-5 text-xl font-medium text-center text-white bg-indigo-500
-                  rounded-lg transition duration-200 hover:bg-indigo-600 ease">Register</button>
-                {registrationSuccess && <Link href="/login" className="w-full inline-block pt-4 pr-5 pb-4 pl-5 text-xl font-medium text-center text-white bg-indigo-500
-                  rounded-lg transition duration-200 hover:bg-indigo-600 ease">Login</Link>}
+                <button type="submit" className="w-full py-4 text-xl font-medium text-center text-white bg-[#6ac88e] rounded-lg transition duration-200 hover:bg-[#205072] ease">Register</button>
+                {registrationSuccess && <Link href="/login" className="w-full inline-block pt-4 pr-5 pb-4 pl-5 text-xl font-medium text-center text-white bg-[#205072]
+                  rounded-lg transition duration-200 hover:bg-[#6ac88e] ease">Login</Link>}
             </form>
         </div>
         </div>
